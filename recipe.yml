@@ -1,6 +1,6 @@
-base: ghcr.io/vanilla-os/desktop:main
-name: Custom Vanilla Desktop
-id: vanilla-custom
+base: ghcr.io/iwisp360/plasma-image:main
+name: Custom Plasma Image for VanillaOS
+id: plasma-image
 labels:
   maintainer: self-maintained
 args:
@@ -15,16 +15,59 @@ modules:
 
 # Put your custom actions behind this comment
 
-- name: example-packages
+- name: plasma-packages
   type: apt
   source:
     packages:
-    - vim
+    - kde-plasma-desktop    
+    - plasma-workspace-wayland
+    - libcurl3-gnutls
+    - libfuse2
+    - breeze-gtk-theme
+    - kde-config-gtk-style
+    - kde-config-gtk-style-preview
+    - kde-config-sddm
+    - kde-config-screenlocker
+    - sddm-theme-debian-breeze
+    - colord-kde
+    - kgamma5
+    - kinfocenter
+    - bluedevil
+    - kscreen
+    - kmenuedit
+    - kio-extras
+    - ark
+    - drkonqi
+    - konsole
+    - okular
+    - skanpage
+    - partitionmanager
+    - kdeconnect
+    - baloo-kf5
+    - frameworkintegration
+    - xsettingsd
+    - plasma-pa
+    - fonts-hack
+    - fonts-noto
+    - plasma-browser-integration
+    - plasma-discover
+    - plasma-disks
+    - plasma-nm
+    - plasma-firewall
+    - plasma-systemmonitor
+    - plasma-vault
+    - powerdevil
+    - systemsettings
+    - xdg-desktop-portal-kde
+    - xdg-desktop-portal-gtk
+    - kde-config-flatpak
+    - plasma-discover-backend-flatpak
 
-- name: example-commands
+- name: config
   type: shell
   commands:
-  - echo Example output
+  - echo Setting Login Screen...
+  - systemctl enable sddm
 
 - name: package-modules
   type: includes
